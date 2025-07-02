@@ -7,21 +7,19 @@ import java.util.List;
 
 @Entity
 @Table(name="compras")
-public class Compra
-
-{
+public class Compra {
     @Id //LLave primaria
     //Autogenera Ids autoincrementables
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_compra")
+    @Column(name = "id_compra")
     private int idCompra;
 
-    @Column(name="id_cliente")
+    @Column(name = "id_cliente")
     private Integer idCliente;
 
     private LocalDateTime fecha;
 
-    @Column(name="medio_pago")
+    @Column(name = "medio_pago")
     private String medioPago;
 
     private String comentario;
@@ -31,11 +29,11 @@ public class Compra
     //Relación con Cliente: Muchas compras para un cliente
     @ManyToOne
     //Intertable//Updatable en false es para que no haya modificaciones
-    @JoinColumn(name = "id_cliente",insertable = false,updatable = false)
+    @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
     private Cliente cliente;
 
     @OneToMany(mappedBy = "compra")
-    private List <CompraProducto> productos;
+    private List<CompraProducto> productos;
 
     public int getIdCompra() {
         return idCompra;
@@ -84,6 +82,7 @@ public class Compra
     public void setEstado(Boolean estado) {
         this.estado = estado;
     }
+}
 
 
 
